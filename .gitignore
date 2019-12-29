@@ -1,0 +1,10 @@
+__pycache__
+*.pyc
+*.db
+*.zip
+build
+*.egg-info
+*/Log/Log_*
+sample/test_report.html
+*.html
+gac_test_case
