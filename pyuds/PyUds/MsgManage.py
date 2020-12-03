@@ -65,7 +65,7 @@ class DBPaser(object):
         msg_list = {}
         for r in self.db_str.splitlines():
             if not bool(msg):
-                if r[:3] == 'BO_':
+                if r[:4] == 'BO_ ':
                     c = r.split(':')
                     nm = c[0].split() + c[1].split()
                     MsgID = try_to_value(nm[1])
@@ -79,7 +79,7 @@ class DBPaser(object):
                     msg_list[MsgName]=msg
             else:
                 c = r.strip()
-                if r[:1] == ' ' and c[:3] == 'SG_':
+                if r[:1] == ' ' and c[:4] == 'SG_ ':
                     c = c.split(':')
                     nm = c[0].split() + c[1].split()
                     bp = re.split('[|@]+', nm[2])

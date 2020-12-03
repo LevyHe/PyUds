@@ -79,7 +79,7 @@ class CanBus(vxlbase.VxlBase):
 
     def getchannelIdx(self):
         return super(CanBus, self).getchannelIdx(self.channel, self._app_name, self.bus_type)
-        
+
     def getChannelMask(self):
         return super(CanBus, self).getChannelMask(self.bus_type, self.channelIdx,
             self.xlInterfaceVersion)
@@ -151,7 +151,7 @@ class CanBus(vxlbase.VxlBase):
                     event_count), ctypes.byref(event))
             except vxlapy.XLstatusError as e:
                 if e.status not in [vxlapy.XL_ERR_QUEUE_IS_EMPTY, vxlapy.XL_ERROR]:
-                    raise 
+                    raise
             else:
                 if event.tag == vxlapy.XL_RECEIVE_MSG:
                     msg_id = event.tagData.msg.id
@@ -184,7 +184,7 @@ class CanBus(vxlbase.VxlBase):
 class CanFdBus(vxlbase.VxlBase):
     def __init__(self, channel=0, app_name="CANalyzer", can_filters=None, poll_interval=0.01,
                  bitrate=500000, rx_queue_size=2 ** 14, data_bitrate=2000000, sjwAbr=8, tseg1Abr=31, tseg2Abr=8, sjwDbr=2, tseg1Dbr=7, tseg2Dbr=2, **config):
-                 
+
         super(CanFdBus, self).__init__()
         self.xlInterfaceVersion = vxlapy.XL_INTERFACE_VERSION_V4
         self.channel = channel
@@ -282,7 +282,7 @@ class CanFdBus(vxlbase.VxlBase):
         xl_event.tagData.canMsg.canId = msg_id
         xl_event.tagData.canMsg.dlc = len2dlc(msg.dlc)
         xl_event.tagData.canMsg.msgFlags = flags
-        xl_event.tagData.msg.data[0:len(msg.data)] = msg.data
+        xl_event.tagData.canMsg.data[0:len(msg.data)] = msg.data
         try:
             self.api.xlCanTransmitEx(
                 self.portHandle, self.accessMask, message_count, ctypes.byref(MsgCntSent), ctypes.byref(xl_event))
@@ -298,15 +298,15 @@ class CanFdBus(vxlbase.VxlBase):
             try:
                 self.api.xlCanReceive(self.portHandle, ctypes.byref(event))
             except vxlapy.XLstatusError as e:
-                if e.status not in [vxlapy.XL_ERR_QUEUE_IS_EMPTY, vxlapy.XL_ERROR, vclapy.XL_ERR_QUEUE_IS_FULL]:
+                if e.status not in [vxlapy.XL_ERR_QUEUE_IS_EMPTY, vxlapy.XL_ERROR, vxlapy.XL_ERR_QUEUE_IS_FULL]:
                     raise
             else:
                 if event.tag == vxlapy.XL_CAN_EV_TAG_RX_OK or event.tag == vxlapy.XL_CAN_EV_TAG_TX_OK:
                     msg_id = event.tagData.canRxOkMsg.canId
                     dlc = dlc2len(event.tagData.canRxOkMsg.dlc)
                     flags = event.tagData.canRxOkMsg.msgFlags
-                    timestamp = event.timeStamp * 1e-9
-                    channel = event.chanIndex
+                    timestamp = event.timeStampSync * 1e-9
+                    channel = event.channelIndex
                     msg = Message(
                         timestamp=timestamp + self._time_offset,
                         arbitration_id=msg_id & 0x1FFFFFFF,

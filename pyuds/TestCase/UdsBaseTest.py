@@ -72,6 +72,10 @@ class TesterBase(object):
     def AddDescription(self, desc):
         __class__.AddDescription.desc = desc
 
+    @UdsLoging(test_level=0, test_type=4)
+    def Requirements(self, desc):
+        __class__.Requirements.desc = desc
+
     @UdsLoging(test_level=0, test_type=0)
     def StartTesterPresent(self):
         s3time = int(self.diag.uds_client.S3ClientTime * 1000)
