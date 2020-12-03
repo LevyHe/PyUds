@@ -36,7 +36,7 @@ setup(
     url="https://github.com/LevyHe/PyUds",
     author="levy.he",
     author_email="levy.he@gmail.com",
-    packages=find_packages(include=['pyuds', 'pyuds.*']),
+    packages=find_packages(include=['pyuds', 'pyuds.*', 'termcolor', 'ExcelParse']),
     package_data={'PyUds.bus.driver.vector': ['vxlapi_32bit.dll', 'vxlapi_64bit.dll'],
                   'PyUds.bus.driver.pcan': ['PCANBasic_nt_amd64_32bit.dll', 'PCANBasic_nt_amd64_64bit.dll']},
     platforms="any",
