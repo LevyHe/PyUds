@@ -1,0 +1,99 @@
+{
+   "Bus": [
+    {
+        "Name": "CanBus1",
+        "BusType": "Can",
+        "BusConfig": {
+            "channel": "0",
+            "bus_driver": "pcan",
+            "app_name": "PCAN",
+            "bitrate": "500000"
+        },
+        "ComConfig": {
+            "rx_poll_interval": "0.01",
+            "tx_poll_interval": "0.002"
+        }
+    },
+    {
+        "Name": "CanBus2",
+        "BusType": "Can",
+        "BusConfig": {
+            "channel": "1",
+            "bus_driver": "pcan",
+            "app_name": "PCAN",
+            "bitrate": "500000"
+        }
+    }
+   ],
+   "UdsClient": [
+      {
+         "Name": "CanUds",
+         "BusName": "CanBus1",
+         "TpConfig": {
+            "phy_id": "0x731",
+            "func_id": "0x7ff",
+            "resp_id": "0x631"
+         },
+         "DiagConfig":
+         {
+            "P2Max": "0.5",
+            "P2ExMax": "5.0",
+            "S3ClientTime": "2.0"
+         }
+      }
+
+   ],
+   "UdsTester": [
+      {
+         "Name": "FLR",
+         "ClientName": "CanUds",
+         "Class": "TesterBase",
+         "Security": "FLR"
+      }
+   ],
+   "Security": [
+      {
+         "Name": "UdsSecurity",
+         "KeyGens": [
+            {
+               "Type": "DLL",
+               "Param": "Test.dll",
+               "Level": [
+                  1,
+                  17
+               ]
+            },
+            {
+               "Type": "Class",
+               "Param": "InternalKeyGen",
+               "Level": [
+                  95,
+                  97
+               ]
+            }
+         ]
+      }
+   ],
+   "Message": [
+      {
+         "Name": "NMWeakUp",
+         "BusName": "CanBus1",
+         "Type": "Can",
+         "ID": "0x531",
+         "Dir": "Tx",
+         "IsCycle": "True",
+         "CycleTime": "0.01",
+         "Data": [
+            "0x00",
+            "0x40",
+            "0x00",
+            "0x28",
+            "0x00",
+            "0x00",
+            "0x00",
+            "0x00"
+         ]
+      }
+   ]
+   
+}
