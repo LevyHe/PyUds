@@ -1,6 +1,10 @@
 # PyUds
 Used Python to do diagnostic test, and genertae the html test report. 
 
+## Uds Command
+This supported run the diagnostic command, 
+By running 'python pcan.py uds', then you can do input the diagnostic command like  "3e 00"
+
 ## Depends
 1. mako
 2. pywin32
