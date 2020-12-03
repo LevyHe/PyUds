@@ -28,12 +28,13 @@ class UdsLoging(object):
     test_suite = []
     test_group = []
     test_result = []
+    requirement = []
     has_sub_test = False
     diag = None
     uu_count = 0
     uu_base = '1281717881'
 
-    def __init__(self, test_level=0, func_request=False, test_type=2, verbose=True):
+    def __init__(self, test_level=0, func_request=False, test_type=2, verbose=True, skipped=False):
         '''
         @test_level to indication which log function to use
             0 base uds test step
@@ -47,17 +48,19 @@ class UdsLoging(object):
             1 wait 
             2 diagnostic test
             3 Can Message or FlexRay Frame
-
+            4 requirement
         '''
         self.verbose = verbose
         self.test_type = test_type
         self.level = test_level
         self.func_request = func_request
+        self.skipped = skipped
 
     def __call__(self, func):
         
         @wraps(func)
         def caller(*args, **kwargs):
+            resp = None
             UdsLoging.uu_count += 4
             if self.level < 2 and self.test_type==2:
                 if hasattr(args[0], 'diag'):
@@ -74,15 +77,18 @@ class UdsLoging(object):
             elif self.level == 2:
                 resp = self.test_assert_log(caller, func, *args, **kwargs)
             elif self.level == 3:
-                resp = self.test_case_log(caller, func, *args, **kwargs)
+                if not self.skipped:
+                    resp = self.test_case_log(caller, func, *args, **kwargs)
             elif self.level == 4:
-                UdsLoging.collect_test_case()
-                UdsLoging.uu_count += 4
-                resp = self.test_suite_log(caller, func, *args, **kwargs)
+                if not self.skipped:
+                    UdsLoging.collect_test_case()
+                    UdsLoging.uu_count += 4
+                    resp = self.test_suite_log(caller, func, *args, **kwargs)
             elif self.level == 5:
-                UdsLoging.collect_test_case()
-                UdsLoging.uu_count += 4
-                resp = self.test_group_log(caller, func, *args, **kwargs)
+                if not self.skipped:
+                    UdsLoging.collect_test_case()
+                    UdsLoging.uu_count += 4
+                    resp = self.test_group_log(caller, func, *args, **kwargs)
             return resp
         return caller
 
@@ -188,17 +194,18 @@ class UdsLoging(object):
         uid = UdsLoging.uu_base+'_%04d' % (UdsLoging.uu_count)
         UdsLoging.test_step = []
         UdsLoging.test_result = []
+        UdsLoging.requirement = []
         start_time = time.time()
         try:
             resp = func(*args, **kwargs)
         except UdsNegativeResponse as ex:
             step_count = len(UdsLoging.test_step) + 1
-            UdsLoging.test_result.append(dict(result='Error', step_desc=str(ex),
+            UdsLoging.test_result.append(dict(result='Error', step_desc=str(ex), requirement=UdsLoging.requirement,
              step_count=step_count, start_time=start_time, end_time=time.time()))
             resp = None
         except UdsNoneResponse as ex:
             step_count = len(UdsLoging.test_step) + 1
-            UdsLoging.test_result.append(dict(result='Error', step_desc=str(ex),
+            UdsLoging.test_result.append(dict(result='Error', step_desc=str(ex), requirement=UdsLoging.requirement,
             step_count=step_count, start_time=start_time, end_time=time.time()))
             resp = None
         if len(UdsLoging.test_result) == 0:
@@ -218,12 +225,12 @@ class UdsLoging(object):
             if result is not None:
                 end_time = result['end_time']
                 step_desc = '{}_{}'.format(caller_desc, count)
-                current_step = result['step_count']
+                current_step = result['step_count'] - 1
                 if self.verbose:
                     print('%d.%d-%s:%s' % (len(UdsLoging.test_suite) + 1, step_count, step_desc, result['result']))
                 test_step = UdsLoging.test_step[last_step:current_step]
-
-                test_desc = dict(test_result=result, uid=uid,
+                requirement = result.get('requirement', ['NA'])
+                test_desc = dict(test_result=result, uid=uid, requirement=requirement, 
                                  step_desc=step_desc, test_step=test_step, start_time=start_time, end_time=end_time, step_count=step_count)
                 start_time = end_time
                 last_step = current_step
@@ -233,13 +240,14 @@ class UdsLoging(object):
                 if self.verbose:
                     print('%d.%d-%s:%s' % (len(UdsLoging.test_suite) + 1, step_count, step_desc, "None"))
                 test_step = UdsLoging.test_step[last_step:]
-                test_desc = dict(test_result=None, uid=uid,
+                test_desc = dict(test_result=None, uid=uid, requirement=[], 
                                  step_desc=step_desc, test_step=test_step, start_time=start_time, end_time=end_time, step_count=step_count)
             UdsLoging.test_case.append(test_desc)
             UdsLoging.uu_count += 4
             uid = UdsLoging.uu_base+'_%04d' % (UdsLoging.uu_count)
         UdsLoging.test_step = []
         UdsLoging.test_result = []
+        UdsLoging.requirement = []
         return resp
 
     def test_assert_log(self, caller, func, *args, **kwargs):
@@ -270,9 +278,10 @@ class UdsLoging(object):
         else:
             actual = None
 
-        test_desc = dict(result=result, expect=expect, actual=actual, uid=uid,
+        test_desc = dict(result=result, expect=expect, actual=actual, uid=uid, requirement=UdsLoging.requirement,
             step_desc=step_desc, start_time=start_time, end_time=end_time, step_count=step_count)
         UdsLoging.test_result.append(test_desc)
+        UdsLoging.requirement=[]
         return resp
 
     def sub_step_test_log(self, caller, func, *args, **kwargs):
@@ -307,12 +316,18 @@ class UdsLoging(object):
         start_time = time.time()
         resp = func(*args, **kwargs)
         end_time = time.time()
-        if UdsLoging.has_sub_test is True:
-            step_count = len(UdsLoging.sub_step) + 1
-            step = UdsLoging.sub_step
+        if self.test_type == 4:
+            #requirement type
+            if hasattr(caller, 'desc'):
+                UdsLoging.requirement.append(caller.desc)
+            return resp
         else:
-            step_count = len(UdsLoging.test_step) + 1
-            step = UdsLoging.test_step
+            if UdsLoging.has_sub_test is True:
+                step_count = len(UdsLoging.sub_step) + 1
+                step = UdsLoging.sub_step
+            else:
+                step_count = len(UdsLoging.test_step) + 1
+                step = UdsLoging.test_step
         if hasattr(caller, 'desc'):
             step_desc = caller.desc
             del caller.desc

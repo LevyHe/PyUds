@@ -71,11 +71,14 @@ class CanTp(TpBase):
         self._sending = False
         self._sending_once = False
         self._start_time = time.time()
+        self.diag_start = False
+        
 
     def GetAddrInfo(self):
         return (self.phy_id, self.func_id, self.resp_id)
         
     def SendFuncReq(self, data):
+        self.diag_start = True
         self._resp_event.clear()
         if len(data) < self.FUNC_FRAME_LENGTH:
             self.ReqBuf = data[:]
@@ -91,6 +94,7 @@ class CanTp(TpBase):
         else:
             raise CanTpFrameError()
     def SendPhyReq(self, data):
+        self.diag_start = True
         self._resp_event.clear()
         if len(data) < self.FRAME_LENGTH:
             if len(data) < self.FUNC_FRAME_LENGTH:
@@ -165,6 +169,8 @@ class CanTp(TpBase):
             self._start_time = time.time()
             return self._cf_sender()
     def reader(self, msg):
+        if not self.diag_start:
+            return
         if msg.is_extended_id:
             msg_id = self.EXT_ID_MASK | msg.arbitration_id
         else:
@@ -254,6 +260,24 @@ class CanFdTp(CanTp):
                  FRAME_LENGTH=64):
         super(CanFdTp, self).__init__(
             phy_id=phy_id, func_id=func_id, resp_id=resp_id, uudt_id=uudt_id, FRAME_LENGTH=FRAME_LENGTH)
+
+    def _pack_func_message(self, tx_id, buf):
+        if (tx_id & self.EXT_ID_MASK) == 0:
+            ext_id = False
+            msg_id = tx_id & 0x7FF
+        else:
+            ext_id = True
+            msg_id = tx_id & 0x1FFFFFFF
+        dlc = 64
+        for l in self.CAN_FD_DLC:
+            if l >= len(buf):
+                dlc = l
+                break
+        is_fd = True
+        
+        sbuf = buf + [self.PAD_CHAR] * (dlc - len(buf))
+        msg = Message(arbitration_id=msg_id, data=sbuf, is_extended_id=ext_id, is_fd=is_fd)
+        return msg
 
     def _pack_message(self, tx_id, buf):
         if (tx_id & self.EXT_ID_MASK) == 0:

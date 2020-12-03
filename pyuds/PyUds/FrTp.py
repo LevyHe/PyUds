@@ -105,6 +105,7 @@ class FrTp(TpBase):
         self._last_fr_cycle = 0
         self._current_pci = 0
         self.error_str = ''
+        self.diag_start = False
 
     def GetAddrInfo(self):
        return (self.target_addr, self.func_addr, self.source_addr)
@@ -113,6 +114,7 @@ class FrTp(TpBase):
         self._fr_cycle = fr_cycle
 
     def SendFuncReq(self, data):
+        self.diag_start = True
         self.error_str = ''
         self._resp_event.clear()
         if len(data) <= self.tx_max_stf_length:
@@ -128,6 +130,7 @@ class FrTp(TpBase):
         else:
             raise FrTpFrameError('Functional request has wrong frame length')
     def SendPhyReq(self, data):
+        self.diag_start = True
         self.error_str = ''
         self._resp_event.clear()
         self.ReqBuf = data[:0xFFFF]
@@ -235,6 +238,8 @@ class FrTp(TpBase):
                     break
             return fr_list
     def reader(self, msg):
+        if not self.diag_start:
+            return
         if msg.slot_id in [x["slot_id"] for x in self.rx_slots]:
             target_addr = (msg.data[0] << 8) + msg.data[1]
             source_addr = (msg.data[2] << 8) + msg.data[3]

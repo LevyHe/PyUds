@@ -328,7 +328,7 @@ class BaseDiagnostic(DiagRequest):
         return self.diagWaitResponse()
 
     def DynamicallyDefineDataIdentifier(self, *arg):
-        cmd = [0x23] + list(arg)
+        cmd = [0x2C] + list(arg)
         self.diagSendRequest(*cmd)
         return self.diagWaitResponse()
 

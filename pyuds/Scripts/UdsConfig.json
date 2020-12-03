@@ -1,0 +1,77 @@
+{
+   "Bus": [
+      {
+         "Name": "CanBus1",
+         "BusType": "Can",
+         "BusConfig": {
+            "channel": "0",
+            "app_name": "CANalyzer",
+            "bitrate": "500000"
+         }
+      },
+      {
+         "Name": "CanBus2",
+         "BusType": "Can",
+         "BusConfig": {
+            "channel": "1",
+            "app_name": "CANalyzer",
+            "bitrate": "500000"
+         }
+      }
+   ],
+   "UdsClient": [
+      {
+         "Name": "CanPhy",
+         "BusName": "CanBus1",
+         "TpConfig": {
+            "phy_id": "0x727",
+            "func_id": "0x7DF",
+            "resp_id": "0x7A7"
+         },
+         "DiagConfig":
+         {
+            "P2Max": "0.5",
+            "P2ExMax": "2.0",
+            "S3ClientTime": "2.0"
+         }
+      },
+      {
+         "Name": "CanInternal",
+         "BusName": "CanBus1",
+         "TpConfig": {
+            "phy_id": "0x1A000020",
+            "func_id": "0",
+            "resp_id": "0x1A000021"
+         },
+         "DiagConfig": {
+            "P2Max": "0.5",
+            "P2ExMax": "2.0",
+            "S3ClientTime": "2.0"
+         }
+      }
+   ],
+   "Message":[
+      {
+         "Name":"SRS1",
+         "BusName": "CanBus1",
+         "Type":"Can",
+         "ID":"0x7F1",
+         "Dir":"Tx",
+         "Cycle":"0.01",
+         "Timeout":"2.0",
+         "Data":["0x00","0x00","0x00","0x00","0x00","0x00","0x00","0x00"]
+      },
+      {
+         "Name":"SRS2",
+         "BusName": "CanBus1",
+         "Type":"DB",
+         "DB_Path":"SC2_HSCAN.DBC",
+         "Dir": "Tx",
+         "Cycle":"0.02",
+         "Signals": {
+            "MessageCounter": "123",
+            "TxSyu": "123"
+         }
+      }
+   ]
+}

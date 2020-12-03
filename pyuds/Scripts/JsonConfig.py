@@ -5,6 +5,7 @@ Created on Wed Apr 17 20:15:56 2019
 @author: levy.he
 """
 import json
+import os
 import importlib
 from .BaseType import ComBase, BusBase, TpBase, DiagClientBase, BaseDiagnostic, Message, DBPaser, TesterBase
 from .SecurityKey import BaseKeyGen
@@ -107,9 +108,13 @@ class PyUdsTp(TpBase):
 class PyKeyGen(BaseKeyGen):
     @staticmethod
     def __new__(cls, class_name, *args, **config):
-        cls = _get_scripts_class(class_name)
-        return cls(*args, **config)
-
+        try:
+            cls = _get_scripts_class(class_name)
+            return cls(*args, **config)
+        except:
+            module = importlib.import_module("__main__")
+            cls = getattr(module, class_name)
+            return cls(*args, **config)
 
 class PyTester(TesterBase):
     @staticmethod
@@ -137,6 +142,7 @@ class ParamConfigureError(Exception):
 class UdsConfigParse(object):
 
     def __init__(self, json_path):
+        self.conf_dir = os.path.dirname(os.path.abspath(json_path))
         with open(json_path, 'r') as f:
             self.config = json.load(f)
         self._parse_json_value(self.config)
@@ -160,7 +166,11 @@ class UdsConfigParse(object):
                 gens = []
                 for j in i['KeyGens']:
                     if j['Type'] == 'DLL':
-                        gen = PyKeyGen('DllKeyGen', *j['Level'], dll_path=j['Param'])
+                        if os.path.isabs(j['Param']):
+                            dll_path = j['Param']
+                        else:
+                            dll_path = os.path.join(self.conf_dir, j['Param'])
+                        gen = PyKeyGen('DllKeyGen', *j['Level'], dll_path=dll_path)
                     elif j['Type'] == 'Class':
                         gen = PyKeyGen(j['Param'], *j['Level'])
                     else:
@@ -202,6 +212,23 @@ class UdsConfigParse(object):
         else:
             raise ParamConfigureError(
                 'uds name or bustype configure error[%s]' % (name))
+
+    def GetUdsCom(self, name):
+        Bus = []
+        Uds = []
+        Messages = []
+        for i in self.config['UdsCom']:
+            if i['Name'] == name:
+                for j in i.get('Bus', []):
+                    Bus.append(self.GetBus(j))
+                for j in i.get('Clients', []):
+                    diag = self.GetUdsDiag(j['ClientName'], j['Class'])
+                    keygen = self.GetKeyGens(j['Security']) if j.get('Security', None) else None
+                    Uds.append((diag, keygen))
+                for j in i.get('Messages', []):
+                    Messages.append(self.GetMessage(j))
+                break
+        return Bus, Uds, Messages
 
     def GetUdsClient(self, name):
         uds = self._get_uds_client(name)

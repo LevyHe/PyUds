@@ -33,12 +33,18 @@ setup(
     long_description="python uds testcase",
     license="MIT Licence",
 
-    url="http://test.com",
+    url="https://github.com/LevyHe/PyUds",
     author="levy.he",
     author_email="levy.he@gmail.com",
-    packages=find_packages(include=['pyuds','pyuds.*']),
-    package_data={'PyUds.bus.driver.vector': ['vxlapi_32bit.dll', 'vxlapi_64bit.dll']},
+    packages=find_packages(include=['pyuds', 'pyuds.*']),
+    package_data={'PyUds.bus.driver.vector': ['vxlapi_32bit.dll', 'vxlapi_64bit.dll'],
+                  'PyUds.bus.driver.pcan': ['PCANBasic_nt_amd64_32bit.dll', 'PCANBasic_nt_amd64_64bit.dll']},
     platforms="any",
-    install_requires=[],
+    install_requires=[
+        'pyserial',
+        'mako',
+        'pywin32',
+        'xlrd'
+    ],
     python_requires=">=3.6",
 )
