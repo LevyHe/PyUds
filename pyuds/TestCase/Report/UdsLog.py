@@ -208,6 +208,7 @@ class UdsLoging(object):
             UdsLoging.test_result.append(dict(result='Error', step_desc=str(ex), requirement=UdsLoging.requirement,
             step_count=step_count, start_time=start_time, end_time=time.time()))
             resp = None
+
         if len(UdsLoging.test_result) == 0:
             UdsLoging.test_result.append(None)
 
@@ -447,11 +448,11 @@ class UdsTestSuite(object):
                         k_list.append(k)
         if s_func is not None:
             s_func()
-        if e_func is not None:
-            e_func()
         for k in k_list:
             func = getattr(self, k)
             func()
+        if e_func is not None:
+            e_func()
 
 class LoadTest(object):
     def __init__(self, path=None, hidden='.'):

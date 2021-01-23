@@ -1,0 +1,282 @@
+{
+   "Bus": [
+      {
+         "Name": "CanBus1",
+         "BusType": "Can",
+         "BusConfig": {
+            "channel": "0",
+            "app_name": "CANalyzer",
+            "bitrate": "500000"
+         },
+         "ComConfig": {
+            "rx_poll_interval": "0.01",
+            "tx_poll_interval": "0.002"
+         }
+      },
+      {
+         "Name": "CanBus2",
+         "BusType": "Can",
+         "BusConfig": {
+            "channel": "1",
+            "app_name": "CANalyzer",
+            "bitrate": "500000"
+         }
+      }
+   ],
+   "UdsClient": [
+      {
+         "Name": "CanPhy",
+         "BusName": "CanBus1",
+         "TpConfig": {
+            "phy_id": "0x727",
+            "func_id": "0x7DF",
+            "resp_id": "0x7A7"
+         },
+         "DiagConfig":
+         {
+            "P2Max": "0.5",
+            "P2ExMax": "5.0",
+            "S3ClientTime": "2.0"
+         }
+      },
+      {
+         "Name": "CanInternal",
+         "BusName": "CanBus1",
+         "TpConfig": {
+            "phy_id": "0x1A000020",
+            "func_id": "0",
+            "resp_id": "0x1A000021"
+         },
+         "DiagConfig": {
+            "P2Max": "0.5",
+            "P2ExMax": "5.0",
+            "S3ClientTime": "2.0"
+         }
+      },
+      {
+         "Name": "CanScrap",
+         "BusName": "CanBus1",
+         "TpConfig": {
+            "phy_id": "0x7F1",
+            "func_id": "0x7DF",
+            "resp_id": "0x7F9"
+         },
+         "DiagConfig": {
+            "P2Max": "0.5",
+            "P2ExMax": "5.0",
+            "S3ClientTime": "2.0"
+         }
+      }
+   ],
+   "UdsTester":[
+      {
+         "Name":"GAC_A39",
+         "ClientName":"CanPhy",
+         "Class":"TesterBase",
+         "Security":"GAC_A39",
+         "Message":["ACU_SRS_1","ACU_SRS_2","BCS_2","BCS_11","BCS_8_P"]
+      },
+      {
+         "Name": "ScrapTest",
+         "ClientName": "CanScrap",
+         "Class": "TesterBase",
+         "Security": "GAC_A39"
+      }
+   ],
+   "Security":[
+      {
+         "Name":"GAC_A39",
+         "KeyGens":[
+            {
+               "Type":"DLL",
+               "Param":"uds_test.dll",
+               "Level":[1, 17]
+            },
+            {
+               "Type": "Class",
+               "Param": "InternalKeyGen",
+               "Level": [95, 97]
+            }
+         ]
+      }
+   ],
+   "Message": [
+      {
+         "Name": "ACU_SRS_1",
+         "BusName": "CanBus1",
+         "Type": "DB",
+         "DBName":"ACU_SRS_1",
+         "DB_Path": "SC2_HSCAN.DBC",
+         "Dir": "Rx",
+         "Signals": {}
+      },
+      {
+         "Name": "ACU_SRS_2",
+         "BusName": "CanBus1",
+         "Type": "DB",
+         "DBName": "ACU_SRS_2",
+         "DB_Path": "SC2_HSCAN.DBC",
+         "Dir": "Rx",
+         "Signals": {}
+      },
+      {
+         "Name": "BCS_2",
+         "BusName": "CanBus1",
+         "Type": "DB",
+         "DBName": "BCS_2",
+         "DB_Path": "SC2_HSCAN.DBC",
+         "Dir": "Tx",
+         "CycleTime": "0.01",
+         "Signals": {}
+      },
+      {
+         "Name": "BCS_11",
+         "BusName": "CanBus1",
+         "Type": "DB",
+         "DBName": "BCS_11",
+         "DB_Path": "SC2_HSCAN.DBC",
+         "Dir": "Tx",
+         "Signals": {}
+      },
+      {
+         "Name": "BCS_8_P",
+         "BusName": "CanBus1",
+         "Type": "DB",
+         "DBName": "BCS_8_P",
+         "DB_Path": "SC2_HSCAN.DBC",
+         "Dir": "Tx",
+         "Signals": {}
+      },
+      {
+         "Name": "SRS1_SyncRead",
+         "BusName": "CanBus1",
+         "Type": "DB",
+         "DBName": "ACU_SRS_1",
+         "DB_Path": "SC2_HSCAN.DBC",
+         "Dir": "Rx",
+         "IsCycle": "False",
+         "Timeout":"0.02",
+         "Signals": {}
+      },
+      {
+         "Name": "BCS2_SendOnce",
+         "BusName": "CanBus1",
+         "Type": "DB",
+         "DBName": "BCS_2",
+         "DB_Path": "SC2_HSCAN.DBC",
+         "Dir": "Tx",
+         "IsCycle": "False",
+         "Signals": {}
+      },
+      {
+         "Name": "Msg_SRS1_Cycle",
+         "BusName": "CanBus1",
+         "Type": "Can",
+         "ID": "0x1AE",
+         "Dir": "Rx",
+         "IsCycle": "True"
+      },
+      {
+         "Name": "Msg_SRS1_ReadOnce",
+         "BusName": "CanBus1",
+         "Type": "Can",
+         "ID": "0x1AE",
+         "Dir": "Rx",
+         "Timeout": "0.4",
+         "IsCycle": "False"
+      },
+      {
+         "Name": "Msg_BCS2_Cycle",
+         "BusName": "CanBus1",
+         "Type": "Can",
+         "ID": "0x260",
+         "Dir": "Tx",
+         "IsCycle": "True",
+         "CycleTime": "0.01",
+         "Data": [
+            "0x01",
+            "0x02",
+            "0x03",
+            "0x04",
+            "0x05",
+            "0x06",
+            "0x07",
+            "0x08"
+         ]
+      },
+      {
+         "Name": "FrSample",
+         "BusName": "None",
+         "Type": "Fr",
+         "SlotId": "77",
+         "BaseCycle": "0",
+         "RepetitionCycle": "1",
+         "SingleShot": "True",
+         "Dir": "Tx",
+         "IsCycle": "True",
+         "CycleTime": "0.01",
+         "DLC": "32",
+         "Data": [
+            "0x01",
+            "0x02",
+            "0x03",
+            "0x04",
+            "0x05",
+            "0x06",
+            "0x07",
+            "0x08"
+         ]
+      },
+      {
+         "Name": "Msg_BCS2_SendOnce",
+         "BusName": "CanBus1",
+         "Type": "Can",
+         "ID": "0x260",
+         "Dir": "Tx",
+         "IsCycle": "False",
+         "Data": [
+            "0x04",
+            "0x02",
+            "0x03",
+            "0x04",
+            "0x05",
+            "0x06",
+            "0x07",
+            "0x08"
+         ]
+      },
+      {
+         "Name": "sample1",
+         "BusName": "CanBus1",
+         "Type": "Can",
+         "ID": "0x7F1",
+         "Dir": "Rx",
+         "IsCycle": "True",
+         "CycleTime": "0.01",
+         "Timeout": "0.01",
+         "Data": [
+            "0x00",
+            "0x00",
+            "0x00",
+            "0x00",
+            "0x00",
+            "0x00",
+            "0x00",
+            "0x00"
+         ]
+      },
+      {
+         "Name": "sample2",
+         "BusName": "CanBus1",
+         "Type": "DB",
+         "DBName": "ACU_SRS_2",
+         "DB_Path": "SC2_HSCAN.DBC",
+         "Dir": "Rx",
+         "Cycle": "0.02",
+         "Signals": {
+            "MessageCounter": "123",
+            "TxSyu": "123"
+         }
+      }
+   ]
+}

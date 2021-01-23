@@ -1,4 +1,4 @@
-__pycache__
+**/__pycache__/**
 *.pyc
 *.db
 *.zip
@@ -7,4 +7,6 @@ build
 */Log/Log_*
 sample/test_report.html
 *.html
+document
 gac_test_case
+dist/**

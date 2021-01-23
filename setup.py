@@ -27,7 +27,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pyuds",
-    version="1.0.0",
+    version="1.0.1",
     zip_safe=False,
     description="python uds testcase",
     long_description="python uds testcase",
@@ -36,8 +36,9 @@ setup(
     url="https://github.com/LevyHe/PyUds",
     author="levy.he",
     author_email="levy.he@gmail.com",
-    packages=find_packages(include=['pyuds', 'pyuds.*', 'termcolor', 'ExcelParse']),
+    packages=find_packages(include=['pyuds', 'pyuds.*', 'CddParser', 'ExcelParse', 'termcolor', 'pyps', 'pytty']),
     package_data={'PyUds.bus.driver.vector': ['vxlapi_32bit.dll', 'vxlapi_64bit.dll'],
+                  'PyUds.TestCase.Report': ['r_template.template.html'],
                   'PyUds.bus.driver.pcan': ['PCANBasic_nt_amd64_32bit.dll', 'PCANBasic_nt_amd64_64bit.dll']},
     platforms="any",
     install_requires=[

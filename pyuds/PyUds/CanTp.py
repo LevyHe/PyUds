@@ -274,7 +274,7 @@ class CanFdTp(CanTp):
                 dlc = l
                 break
         is_fd = True
-        
+
         sbuf = buf + [self.PAD_CHAR] * (dlc - len(buf))
         msg = Message(arbitration_id=msg_id, data=sbuf, is_extended_id=ext_id, is_fd=is_fd)
         return msg

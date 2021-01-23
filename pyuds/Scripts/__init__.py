@@ -6,4 +6,5 @@ Created on Fri Apr 19 21:48:47 2019
 """
 
 from .JsonConfig import UdsConfigParse
-from .SecurityKey import BaseKeyGen, DllKeyGen, InternalKeyGen, LE45PKeyGen, SecurityKeyGens
+from .SecurityKey import BaseKeyGen, InternalKeyGen, SecurityKeyGens, DllKeyGen
+

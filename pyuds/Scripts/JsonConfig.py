@@ -5,6 +5,7 @@ Created on Wed Apr 17 20:15:56 2019
 @author: levy.he
 """
 import json
+from multiprocessing.managers import Namespace
 import os
 import importlib
 from .BaseType import ComBase, BusBase, TpBase, DiagClientBase, BaseDiagnostic, Message, DBPaser, TesterBase
@@ -214,19 +215,19 @@ class UdsConfigParse(object):
                 'uds name or bustype configure error[%s]' % (name))
 
     def GetUdsCom(self, name):
-        Bus = []
-        Uds = []
-        Messages = []
+        Bus = {}
+        Uds = {}
+        Messages = {}
         for i in self.config['UdsCom']:
             if i['Name'] == name:
                 for j in i.get('Bus', []):
-                    Bus.append(self.GetBus(j))
+                    Bus[j] = self.GetBus(j)
                 for j in i.get('Clients', []):
                     diag = self.GetUdsDiag(j['ClientName'], j['Class'])
                     keygen = self.GetKeyGens(j['Security']) if j.get('Security', None) else None
-                    Uds.append((diag, keygen))
+                    Uds[j['ClientName']] = Namespace(diag=diag, keygen=keygen)
                 for j in i.get('Messages', []):
-                    Messages.append(self.GetMessage(j))
+                    Messages[j] = self.GetMessage(j)
                 break
         return Bus, Uds, Messages
 

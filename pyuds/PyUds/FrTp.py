@@ -54,10 +54,11 @@ class FrTp(TpBase):
     FC_ACK_PCI = [FR_FC_ACK_RET, FR_FC_ACK, 0x00, 0x00]
     FC_ABT_PCI = [FR_FC_ABT]
     FC_CTS_PCI = [FR_FC_CTS, 0x00, 0x00, 0x00]
-    def __init__(self,rx_slots=[(0,0,1)],tx_slots=[(0,0,1)],source_addr=0,target_addr=0,func_addr=0,tx_frame_length=22,rx_frame_length=32, ack=False):
+    def __init__(self,rx_slots=[(0,0,1)],tx_slots=[(0,0,1)],func_tx_slots=[(0,0,1)],source_addr=0,target_addr=0,func_addr=0,tx_frame_length=22,rx_frame_length=32, ack=False):
 
         self.rx_slots = [dict(slot_id=x[0], base_cycle=x[1], repetition_cycle=x[2]) for x in rx_slots]
         self.tx_slots = [dict(slot_id=x[0], base_cycle=x[1], repetition_cycle=x[2]) for x in tx_slots]
+        self.func_tx_slots = [dict(slot_id=x[0], base_cycle=x[1], repetition_cycle=x[2]) for x in func_tx_slots]
         self.source_addr = source_addr&0xFFFF
         self.target_addr = target_addr&0xFFFF
         self.func_addr = func_addr & 0xFFFF
@@ -416,7 +417,7 @@ class FrTp(TpBase):
 
     def _func_send_once(self, pci=[], data=[]):
         self.FrameBuf = self._func_addr_pad + pci + data
-        self._message = self._pack_frame(self.FrameBuf, tx_slot=self.tx_slots[1])
+        self._message = self._pack_frame(self.FrameBuf, tx_slot=self.func_tx_slots[0])
         self._sending_once = True
 
     def _pack_frame(self, buf, tx_slot=None):

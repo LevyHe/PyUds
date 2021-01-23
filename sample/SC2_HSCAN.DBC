@@ -1,0 +1,648 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: ICM BCS SAS GWM IFC DDCTAT EMS BSD HVACF MRR ACU VCU TCM BCM TSTR GW ESC RCM
+
+
+BO_ 683 VCU_9_P: 8 VCU
+ SG_ VCU_BrkPedPst : 55|8@0+ (0.392,0) [0|99.96] "%"  RCM
+ SG_ VCU_CrntGearLvl : 38|3@0+ (1,0) [0|7] ""  RCM
+ SG_ VCU_BrkPedPstVD : 27|1@0+ (1,0) [0|1] ""  RCM
+
+BO_ 697 VCU_8_P: 8 VCU
+ SG_ VCU_DCU_ActRotSpd : 7|16@0+ (1,-32767) [-32767|32768] "rpm"  RCM
+
+BO_ 864 VCU_2_P: 8 VCU
+ SG_ VCU_VehCrusSt : 7|2@0+ (1,0) [0|3] ""  RCM
+
+BO_ 885 GW_BCM_2_P: 8 GWM
+ SG_ BCM_KeySt : 9|2@0+ (1,0) [0|3] ""  RCM
+
+BO_ 930 BCM_TPMS_1: 8 BCM
+ SG_ TPMS_RRTyreWarn : 39|8@0+ (1,0) [0|255] ""  RCM
+ SG_ TPMS_RLTyreWarn : 31|8@0+ (1,0) [0|255] ""  RCM
+ SG_ TPMS_FRTyreWarn : 23|8@0+ (1,0) [0|255] ""  RCM
+ SG_ TPMS_FLTyreWarn : 15|8@0+ (1,0) [0|255] ""  RCM
+
+BO_ 652 BCS_8_P: 8 BCS
+ SG_ BCS_MasterCylinderPr : 3|12@0+ (0.1,0) [0|250] "bar"  RCM
+
+BO_ 950 BCS_6_P: 8 BCS
+ SG_ BCS_YawRateSt : 4|1@0+ (1,0) [0|1] ""  RCM
+ SG_ BCS_YawRate : 3|12@0+ (0.0009765625,-2.0943) [-2.0943|1.9047234375] "rad/s"  RCM
+
+BO_ 618 BCS_11: 8 BCS
+ SG_ BCS_VDCOff : 55|1@0+ (1,0) [0|1] ""  RCM
+
+BO_ 633 EMS_6: 8 EMS
+ SG_ EMS_GasPedalActPstVD : 20|1@0+ (1,0) [0|1] ""  RCM
+ SG_ EMS_6_MsgCounter : 19|4@0+ (1,0) [0|15] ""  RCM
+ SG_ EMS_GasPedalActPstProtValue : 15|8@0+ (1,0) [0|255] ""  RCM
+ SG_ EMS_GasPedalActPst : 7|8@0+ (0.392,0) [0|99.96] "%"  RCM
+
+BO_ 397 EMS_1: 8 EMS
+ SG_ EMS_BrakePedalVD : 44|1@0+ (1,0) [0|1] ""  RCM
+ SG_ EMS_BrakePedalSt : 45|1@0+ (1,0) [0|1] ""  RCM
+
+BO_ 386 EMS_2: 8 EMS
+ SG_ EMS_EngSpd : 23|16@0+ (1,0) [0|65536] "rpm"  RCM
+
+BO_ 610 EMS_9: 8 EMS
+ SG_ EMS_GasPedalActPstforMRRVD : 39|1@0+ (1,0) [0|1] ""  RCM
+ SG_ EMS_GasPedalActPstforMRR : 31|8@0+ (0.392,0) [0|99.96] "%"  RCM
+ SG_ EMS_BrakeVacuumPressureVD : 34|1@0+ (1,0) [0|1] ""  RCM
+ SG_ EMS_BrakeVacuumPressure : 33|10@0+ (1,0) [0|1023] "hpa"  RCM
+
+BO_ 608 BCS_2: 8 BCS
+ SG_ BCS_EngTorqDecFast : 15|8@0+ (0.392,0) [0|99.96] "%"  RCM
+ SG_ BCS_VehSpdVD : 37|1@0+ (1,0) [0|1] ""  RCM
+ SG_ BCS_VDCFaultSt : 7|1@0+ (1,0) [0|1] ""  RCM
+ SG_ BCS_VDCActiveSt : 53|1@0+ (1,0) [0|1] ""  RCM
+ SG_ BCS_VehSpd : 36|13@0+ (0.05625,0) [0|240] "km/h"  RCM
+ SG_ BCS_TCSActiveSt : 6|1@0+ (1,0) [0|1] ""  RCM
+ SG_ BCS_ABSActiveSt : 1|1@0+ (1,0) [0|1] ""  RCM
+
+BO_ 612 SAS_1: 8 SAS
+ SG_ SAS_SteeringAngleSpd : 23|8@0+ (4,0) [0|1016] "deg/sec"  RCM
+ SG_ SAS_SteeringAngleVD : 8|1@0+ (1,0) [0|1] ""  RCM
+ SG_ SAS_SteeringAngle : 31|16@0+ (0.1,-780) [-780|779.9] "deg"  RCM
+
+BO_ 940 GW_ICM_HVAC_P: 8 GWM
+ SG_ ICM_TotalOdometer : 27|20@0+ (1,0) [0|999999] "km"  RCM
+
+BO_ 428 TCU_2: 8 DDCTAT
+ SG_ TCU_GearForDisp : 3|4@0+ (1,0) [0|15] ""  RCM
+
+BO_ 934 MRR_1: 8 MRR
+ SG_ MRR_AEBInterventionSt : 42|1@0+ (1,0) [0|1] ""  RCM
+ SG_ MRR_AEBFaultSt : 40|1@0+ (1,0) [0|1] ""  RCM
+ SG_ MRR_AEBOffSt : 41|1@0+ (1,0) [0|1] ""  RCM
+
+BO_ 390 MRR_2: 8 MRR
+ SG_ MRR_ACCModeForESP : 54|3@0+ (1,0) [0|7] ""  RCM
+
+BO_ 858 ACU_10_B: 8 ACU
+ SG_ ACU_Time_Year : 7|8@0+ (1,2000) [2000|2255] "y"  RCM
+ SG_ ACU_Time_Second : 27|6@0+ (1,0) [0|59] "s"  RCM
+ SG_ ACU_Time_Month : 15|4@0+ (1,0) [1|12] "m"  RCM
+ SG_ ACU_Time_Minute : 17|6@0+ (1,0) [0|59] "min"  RCM
+ SG_ ACU_Time_Hour : 22|5@0+ (1,0) [0|23] "h"  RCM
+ SG_ ACU_Time_Day : 11|5@0+ (1,0) [1|31] "d"  RCM
+
+BO_ 2041 TesterPhysicalResPCU: 8 RCM
+ SG_ TesterPhysicalResPCU : 7|64@0+ (1,0) [0|1.84467440737096E+019] "bit" Vector__XXX
+
+BO_ 2033 TesterPhysicalReqPCU: 8 TSTR
+ SG_ TesterPhysicalReqPCU : 7|64@0+ (1,0) [0|1.84467440737096E+019] "bit"  RCM
+
+BO_ 939 ACU_SRS_2: 8 RCM
+ SG_ SRS_2_Checksum : 63|8@0+ (1,0) [0|255] "bit" Vector__XXX
+ SG_ SRS_2_MsgCounter : 51|4@0+ (1,0) [0|15] "bit" Vector__XXX
+ SG_ SRS_RearMiddleSeatBeltSt : 14|2@0+ (1,0) [0|3] "bit" Vector__XXX
+ SG_ SRS_RearRightSeatBeltSt : 9|2@0+ (1,0) [0|3] "bit" Vector__XXX
+ SG_ SRS_AirbagFaultSt : 6|1@0+ (1,0) [0|1] "bit" Vector__XXX
+ SG_ SRS_RearLeftSeatBeltSt : 5|2@0+ (1,0) [0|3] "bit" Vector__XXX
+ SG_ SRS_DriverSeatBeltSt : 3|2@0+ (1,0) [0|3] "bit" Vector__XXX
+ SG_ SRS_PsngrSeatBeltSt : 1|2@0+ (1,0) [0|3] "bit" Vector__XXX
+
+BO_ 2015 TesterFunctionalReq: 8 TSTR
+ SG_ TesterFunctionalReq : 7|64@0+ (1,0) [0|1.84467440737096E+019] ""  RCM
+
+BO_ 1959 TesterPhysicalResRCM: 8 RCM
+ SG_ TesterPhysicalResRCM : 7|64@0+ (1,0) [0|1.84467440737096E+019] "bit" Vector__XXX
+
+BO_ 1831 TesterPhysicalReqRCM: 8 TSTR
+ SG_ TesterPhysicalReqRCM : 7|64@0+ (1,0) [0|1.84467440737096E+019] "bit"  RCM
+
+BO_ 2583691296 ACU_DevelopMessage_TX: 8 TSTR
+ SG_ ACU_DevelopMessage_TX : 7|64@0+ (1,0) [0|1.84467440737096E+019] "bit"  RCM
+
+BO_ 2583691297 ACU_DevelopMessage_RX: 8 RCM
+ SG_ ACU_DevelopMessage_RX : 7|64@0+ (1,0) [0|1.84467440737096E+019] "bit" Vector__XXX
+
+BO_ 430 ACU_SRS_1: 8 RCM
+ SG_ SRS_1_Checksum : 63|8@0+ (1,0) [0|255] "bit" Vector__XXX
+ SG_ SRS_NearCrashOutputSt : 16|1@0+ (1,0) [0|1] "bit" Vector__XXX
+ SG_ SRS_MsgCounter : 51|4@0+ (1,0) [0|15] "bit" Vector__XXX
+ SG_ SRS_Rear_CrashOutputSt : 11|1@0+ (1,0) [0|1] "bit" Vector__XXX
+ SG_ SRS_RightSide_CrashOutputSt : 10|1@0+ (1,0) [0|1] "bit" Vector__XXX
+ SG_ SRS_LeftSide_CrashOutputSt : 9|1@0+ (1,0) [0|1] "bit" Vector__XXX
+ SG_ SRS_Front_CrashOutputSt : 8|1@0+ (1,0) [0|1] "bit" Vector__XXX
+ SG_ SRS_CrashOutputSt : 7|8@0+ (1,0) [0|160] "bit" Vector__XXX
+
+
+
+CM_ "SC2 CAN Network";
+BA_DEF_ SG_  "Gateway_ID" INT 0 0;
+BA_DEF_ SG_  "GenSigTimeoutTime_TCU_TBS" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_IPMB" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_SASM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_PBM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_PCU" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_FDSM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_GSM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_TCCM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_TRCM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_GENERIC" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_ATCM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_HUD" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_PSCM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_SCCM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_TBM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_TSTR" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_IPMA" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_CCM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_VDM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_ABS_ESC" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_OCS" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_GWM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_RCM" INT 0 100000;
+BA_DEF_ BO_  "FrameGatewayLC1_HS3" HEX 0 1407;
+BA_DEF_ BO_  "FrameGatewayMS1" HEX 0 1407;
+BA_DEF_ BO_  "FrameGatewayHS3" HEX 0 1407;
+BA_DEF_ BO_  "FrameGatewayHS2" HEX 0 1407;
+BA_DEF_ BO_  "FrameGatewayHS1" HEX 0 1407;
+BA_DEF_ BO_  "NetworkInitialization" ENUM  "No","Yes";
+BA_DEF_ BO_  "FrameGateway" HEX 0 1407;
+BA_DEF_ BO_  "EventRateOfChange" INT 10 10000;
+BA_DEF_ BO_  "ConfiguredTransmitter" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 10000;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 255;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 1000;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 100000;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 100000;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclic,","NotUsed,","NotUsed,","NotUsed,","NotUsed,","NotUsed,","NotUsed,","NotUsed,","NoMsgSendType";
+BA_DEF_ SG_  "U_CD4_MY15_Phev_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY15_Hev_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY15_Gas_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY15_Diesel_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY14_Phev_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY14_Hev_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY14_Gas_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY14_Diesel_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD43_MY16_Gas_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_B479_MY15_Diesel_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_C490LC_MY15_Gas_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_UP375_MY15_Diesel_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_B516LC_MY15_Diesel_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_UP375_MY15_Gas_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_B479_MY15_Gas_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_U502_MY15_Gas_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_B562LC_MY14_Gas_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_B562LC_MY14_Diesel_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_C489_MY14_Gas_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_S550_MY15_Gas_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_P552_MY15_Gas_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD42_MY14_Gas_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD42_MY14_Diesel_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY13_Phev_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY13_Hev_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY13_Gas_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY13_Diesel_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY15_Phev_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY15_Hev_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY15_Gas_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY15_Diesel_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY14_Phev_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY14_Hev_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY14_Gas_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY14_Diesel_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD43_MY16_Gas_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_B479_MY15_Diesel_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_C490LC_MY15_Gas_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_UP375_MY15_Diesel_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_B516LC_MY15_Diesel_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_UP375_MY15_Gas_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_B479_MY15_Gas_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_U502_MY15_Gas_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_B562LC_MY14_Gas_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_B562LC_MY14_Diesel_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_C489_MY14_Gas_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_S550_MY15_Gas_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_P552_MY15_Gas_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD42_MY14_Gas_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD42_MY14_Diesel_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY13_Phev_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY13_Hev_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY13_Gas_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD4_MY13_Diesel_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "ContentDependant" ENUM  "No","Yes";
+BA_DEF_ SG_  "GenSigStartValue" INT 0 1000000000;
+BA_DEF_ SG_  "UsedOnPgmDBC" ENUM  "No","Yes";
+BA_DEF_ SG_  "CrossOver_LIN" ENUM  "No","Yes";
+BA_DEF_ SG_  "CrossOver_InfoCAN" ENUM  "No","Yes";
+BA_DEF_ SG_  "WakeupSignal" ENUM  "No","Yes";
+BA_DEF_ SG_  "FMC_SIG_SSPEC" STRING ;
+BA_DEF_ SG_  "GenSigMissingSourceValue" INT 0 1000000000;
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 100000;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "NotUsed,","OnWrite,","OnWriteWithRepetition,","OnChange,","OnChangeWithRepetition,","IfActive,","IfActiveWithRepeition,","NoSigSendType";
+BA_DEF_ BO_  "Mulitplexer" ENUM  "No","Yes";
+BA_DEF_ BO_  "NmAsrMessage" ENUM  "No","Yes";
+BA_DEF_ BO_  "TpApplType" STRING ;
+BA_DEF_ BO_  "DiagState" ENUM  "No","Yes";
+BA_DEF_ BO_  "TpTxIndex" INT 0 255;
+BA_DEF_ BO_  "NetworkInitializationCommand" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagRequest" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagResponse" ENUM  "No","Yes";
+BA_DEF_ BO_  "NmMessage" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BU_  "Terminator" ENUM  "No","Yes";
+BA_DEF_ BU_  "NodeWakeUpTime" INT 0 1000;
+BA_DEF_ BU_  "NodeStartUpTime" INT 0 1000;
+BA_DEF_ BU_  "NmAsrNodeIdentifier" HEX 128 255;
+BA_DEF_ BU_  "NmAsrNode" ENUM  "No","Yes";
+BA_DEF_ BU_  "PowerType" ENUM  "Switched","Latched","Sleep","vector_leerstring","vector_leerstring";
+BA_DEF_ BU_  "DiagNode" ENUM  "GGDS","GDS","NONE";
+BA_DEF_ BU_  "EOL_SB_Flash" ENUM  "GGDS","GDS","NONE","vector_leerstring";
+BA_DEF_ BU_  "NetworkInitializationUsed" ENUM  "No","Yes";
+BA_DEF_ BU_  "NmNode" ENUM  "No","Yes";
+BA_DEF_ BU_  "NmStationAddress" INT 0 255;
+BA_DEF_ BU_  "ILUsed" ENUM  "No","Yes";
+BA_DEF_ BU_  "NosPackage" ENUM  "None","I3_1","I3_2","1.0.1","RP","EuCD","Volcano";
+BA_DEF_ BU_  "LIN_Master" ENUM  "No","Yes";
+BA_DEF_ BU_  "PackageID" STRING ;
+BA_DEF_ BU_  "GatewayECU" ENUM  "No","Yes";
+BA_DEF_  "StarNetworkGwType" ENUM  "0=NotDefined","1=HS1","2=HS2","3=HS3","4=HS4","5=HS5","6=MS1";
+BA_DEF_  "CMDB_Version" STRING ;
+BA_DEF_  "NmType" STRING ;
+BA_DEF_  "NetworkSpeed" ENUM  "500kBits/s","125kBit/s";
+BA_DEF_  "NmAsrMessageCount" INT 128 128;
+BA_DEF_  "NmAsrBaseAddress" HEX 1408 1408;
+BA_DEF_  "DBName" STRING ;
+BA_DEF_  "VersionDay" INT 1 31;
+BA_DEF_  "Manufacturer" STRING ;
+BA_DEF_  "VersionNumber" INT 0 10000;
+BA_DEF_  "VersionMonth" INT 1 12;
+BA_DEF_  "VersionYear" INT 2000 3000;
+BA_DEF_  "NmBaseAddress" HEX 1280 1280;
+BA_DEF_  "NmMessageCount" INT 0 128;
+BA_DEF_DEF_  "Gateway_ID" 0;
+BA_DEF_DEF_  "GenSigTimeoutTime_TCU_TBS" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_IPMB" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_SASM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_PBM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_PCU" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_FDSM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_GSM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_TCCM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_TRCM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_GENERIC" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_ATCM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_HUD" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_PSCM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_SCCM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_TBM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_TSTR" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_IPMA" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_CCM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_VDM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_ABS_ESC" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_OCS" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_GWM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_RCM" 5000;
+BA_DEF_DEF_  "FrameGatewayLC1_HS3" 1407;
+BA_DEF_DEF_  "FrameGatewayMS1" 1407;
+BA_DEF_DEF_  "FrameGatewayHS3" 1407;
+BA_DEF_DEF_  "FrameGatewayHS2" 1407;
+BA_DEF_DEF_  "FrameGatewayHS1" 1407;
+BA_DEF_DEF_  "NetworkInitialization" "Yes";
+BA_DEF_DEF_  "FrameGateway" 1407;
+BA_DEF_DEF_  "EventRateOfChange" 10000;
+BA_DEF_DEF_  "ConfiguredTransmitter" "No";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 1;
+BA_DEF_DEF_  "GenMsgDelayTime" 20;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenMsgSendType" "NoMsgSendType";
+BA_DEF_DEF_  "U_CD4_MY15_Phev_Tx" "No";
+BA_DEF_DEF_  "U_CD4_MY15_Hev_Tx" "No";
+BA_DEF_DEF_  "U_CD4_MY15_Gas_Tx" "No";
+BA_DEF_DEF_  "U_CD4_MY15_Diesel_Tx" "No";
+BA_DEF_DEF_  "U_CD4_MY14_Phev_Tx" "No";
+BA_DEF_DEF_  "U_CD4_MY14_Hev_Tx" "No";
+BA_DEF_DEF_  "U_CD4_MY14_Gas_Tx" "No";
+BA_DEF_DEF_  "U_CD4_MY14_Diesel_Tx" "No";
+BA_DEF_DEF_  "U_CD43_MY16_Gas_Tx" "No";
+BA_DEF_DEF_  "U_B479_MY15_Diesel_Tx" "No";
+BA_DEF_DEF_  "U_C490LC_MY15_Gas_Tx" "No";
+BA_DEF_DEF_  "U_UP375_MY15_Diesel_Tx" "No";
+BA_DEF_DEF_  "U_B516LC_MY15_Diesel_Tx" "No";
+BA_DEF_DEF_  "U_UP375_MY15_Gas_Tx" "No";
+BA_DEF_DEF_  "U_B479_MY15_Gas_Tx" "No";
+BA_DEF_DEF_  "U_U502_MY15_Gas_Tx" "No";
+BA_DEF_DEF_  "U_B562LC_MY14_Gas_Tx" "No";
+BA_DEF_DEF_  "U_B562LC_MY14_Diesel_Tx" "No";
+BA_DEF_DEF_  "U_C489_MY14_Gas_Tx" "No";
+BA_DEF_DEF_  "U_S550_MY15_Gas_Tx" "No";
+BA_DEF_DEF_  "U_P552_MY15_Gas_Tx" "No";
+BA_DEF_DEF_  "U_CD42_MY14_Gas_Tx" "No";
+BA_DEF_DEF_  "U_CD42_MY14_Diesel_Tx" "No";
+BA_DEF_DEF_  "U_CD4_MY13_Phev_Tx" "No";
+BA_DEF_DEF_  "U_CD4_MY13_Hev_Tx" "No";
+BA_DEF_DEF_  "U_CD4_MY13_Gas_Tx" "No";
+BA_DEF_DEF_  "U_CD4_MY13_Diesel_Tx" "No";
+BA_DEF_DEF_  "U_CD4_MY15_Phev_Rx" "No";
+BA_DEF_DEF_  "U_CD4_MY15_Hev_Rx" "No";
+BA_DEF_DEF_  "U_CD4_MY15_Gas_Rx" "No";
+BA_DEF_DEF_  "U_CD4_MY15_Diesel_Rx" "No";
+BA_DEF_DEF_  "U_CD4_MY14_Phev_Rx" "No";
+BA_DEF_DEF_  "U_CD4_MY14_Hev_Rx" "No";
+BA_DEF_DEF_  "U_CD4_MY14_Gas_Rx" "No";
+BA_DEF_DEF_  "U_CD4_MY14_Diesel_Rx" "No";
+BA_DEF_DEF_  "U_CD43_MY16_Gas_Rx" "No";
+BA_DEF_DEF_  "U_B479_MY15_Diesel_Rx" "No";
+BA_DEF_DEF_  "U_C490LC_MY15_Gas_Rx" "No";
+BA_DEF_DEF_  "U_UP375_MY15_Diesel_Rx" "No";
+BA_DEF_DEF_  "U_B516LC_MY15_Diesel_Rx" "No";
+BA_DEF_DEF_  "U_UP375_MY15_Gas_Rx" "No";
+BA_DEF_DEF_  "U_B479_MY15_Gas_Rx" "No";
+BA_DEF_DEF_  "U_U502_MY15_Gas_Rx" "No";
+BA_DEF_DEF_  "U_B562LC_MY14_Gas_Rx" "No";
+BA_DEF_DEF_  "U_B562LC_MY14_Diesel_Rx" "No";
+BA_DEF_DEF_  "U_C489_MY14_Gas_Rx" "No";
+BA_DEF_DEF_  "U_S550_MY15_Gas_Rx" "No";
+BA_DEF_DEF_  "U_P552_MY15_Gas_Rx" "No";
+BA_DEF_DEF_  "U_CD42_MY14_Gas_Rx" "No";
+BA_DEF_DEF_  "U_CD42_MY14_Diesel_Rx" "No";
+BA_DEF_DEF_  "U_CD4_MY13_Phev_Rx" "No";
+BA_DEF_DEF_  "U_CD4_MY13_Hev_Rx" "No";
+BA_DEF_DEF_  "U_CD4_MY13_Gas_Rx" "No";
+BA_DEF_DEF_  "U_CD4_MY13_Diesel_Rx" "No";
+BA_DEF_DEF_  "ContentDependant" "No";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "UsedOnPgmDBC" "Yes";
+BA_DEF_DEF_  "CrossOver_LIN" "No";
+BA_DEF_DEF_  "CrossOver_InfoCAN" "No";
+BA_DEF_DEF_  "WakeupSignal" "No";
+BA_DEF_DEF_  "FMC_SIG_SSPEC" "Unknown";
+BA_DEF_DEF_  "GenSigMissingSourceValue" 0;
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenSigSendType" "NoSigSendType";
+BA_DEF_DEF_  "Mulitplexer" "No";
+BA_DEF_DEF_  "NmAsrMessage" "No";
+BA_DEF_DEF_  "TpApplType" "";
+BA_DEF_DEF_  "DiagState" "No";
+BA_DEF_DEF_  "TpTxIndex" 0;
+BA_DEF_DEF_  "NetworkInitializationCommand" "No";
+BA_DEF_DEF_  "DiagRequest" "No";
+BA_DEF_DEF_  "DiagResponse" "No";
+BA_DEF_DEF_  "NmMessage" "No";
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "Terminator" "No";
+BA_DEF_DEF_  "NodeWakeUpTime" 10;
+BA_DEF_DEF_  "NodeStartUpTime" 250;
+BA_DEF_DEF_  "NmAsrNodeIdentifier" 128;
+BA_DEF_DEF_  "NmAsrNode" "No";
+BA_DEF_DEF_  "PowerType" "Switched";
+BA_DEF_DEF_  "DiagNode" "GGDS";
+BA_DEF_DEF_  "EOL_SB_Flash" "GGDS";
+BA_DEF_DEF_  "NetworkInitializationUsed" "No";
+BA_DEF_DEF_  "NmNode" "No";
+BA_DEF_DEF_  "NmStationAddress" 0;
+BA_DEF_DEF_  "ILUsed" "Yes";
+BA_DEF_DEF_  "NosPackage" "I3_1";
+BA_DEF_DEF_  "LIN_Master" "No";
+BA_DEF_DEF_  "PackageID" "08.05.00.00.71.xx.xx.rr.00.00";
+BA_DEF_DEF_  "GatewayECU" "No";
+BA_DEF_DEF_  "StarNetworkGwType" "0=NotDefined";
+BA_DEF_DEF_  "CMDB_Version" "v11.01";
+BA_DEF_DEF_  "NmType" "Ford-OSEK";
+BA_DEF_DEF_  "NetworkSpeed" "500kBits/s";
+BA_DEF_DEF_  "NmAsrMessageCount" 128;
+BA_DEF_DEF_  "NmAsrBaseAddress" 1408;
+BA_DEF_DEF_  "DBName" "";
+BA_DEF_DEF_  "VersionDay" 1;
+BA_DEF_DEF_  "Manufacturer" "Ford";
+BA_DEF_DEF_  "VersionNumber" 1;
+BA_DEF_DEF_  "VersionMonth" 1;
+BA_DEF_DEF_  "VersionYear" 2011;
+BA_DEF_DEF_  "NmBaseAddress" 1280;
+BA_DEF_DEF_  "NmMessageCount" 128;
+BA_ "StarNetworkGwType" 2;
+BA_ "CMDB_Version" "v1.10";
+BA_ "VersionDay" 27;
+BA_ "Manufacturer" "Autoliv";
+BA_ "VersionNumber" 3;
+BA_ "VersionMonth" 2;
+BA_ "VersionYear" 2013;
+BA_ "NmType" "SC2";
+BA_ "DBName" "HS2_CAN";
+BA_ "NmStationAddress" BU_ RCM 0;
+BA_ "GenMsgCycleTime" BO_ 683 20;
+BA_ "GenMsgCycleTime" BO_ 697 10;
+BA_ "GenMsgCycleTime" BO_ 864 100;
+BA_ "GenMsgSendType" BO_ 885 0;
+BA_ "GenMsgCycleTime" BO_ 885 20;
+BA_ "GenMsgDelayTime" BO_ 930 0;
+BA_ "GenMsgCycleTime" BO_ 930 100;
+BA_ "GenMsgSendType" BO_ 930 0;
+BA_ "GenMsgDelayTime" BO_ 652 0;
+BA_ "GenMsgCycleTime" BO_ 652 10;
+BA_ "GenMsgSendType" BO_ 652 0;
+BA_ "GenMsgDelayTime" BO_ 950 0;
+BA_ "GenMsgCycleTime" BO_ 950 10;
+BA_ "GenMsgSendType" BO_ 950 0;
+BA_ "GenMsgDelayTime" BO_ 618 0;
+BA_ "GenMsgCycleTime" BO_ 618 10;
+BA_ "GenMsgSendType" BO_ 618 0;
+BA_ "GenMsgDelayTime" BO_ 633 0;
+BA_ "GenMsgCycleTime" BO_ 633 10;
+BA_ "GenMsgSendType" BO_ 633 0;
+BA_ "GenMsgDelayTime" BO_ 397 0;
+BA_ "GenMsgCycleTime" BO_ 397 10;
+BA_ "GenMsgSendType" BO_ 397 0;
+BA_ "GenMsgDelayTime" BO_ 386 0;
+BA_ "GenMsgCycleTime" BO_ 386 10;
+BA_ "GenMsgSendType" BO_ 386 0;
+BA_ "GenMsgDelayTime" BO_ 610 0;
+BA_ "GenMsgCycleTime" BO_ 610 10;
+BA_ "GenMsgSendType" BO_ 610 0;
+BA_ "GenMsgDelayTime" BO_ 608 0;
+BA_ "GenMsgCycleTime" BO_ 608 10;
+BA_ "GenMsgSendType" BO_ 608 0;
+BA_ "GenMsgDelayTime" BO_ 612 0;
+BA_ "GenMsgCycleTime" BO_ 612 10;
+BA_ "GenMsgSendType" BO_ 612 0;
+BA_ "GenMsgDelayTime" BO_ 940 0;
+BA_ "GenMsgCycleTime" BO_ 940 100;
+BA_ "GenMsgSendType" BO_ 940 0;
+BA_ "GenMsgDelayTime" BO_ 428 0;
+BA_ "GenMsgCycleTime" BO_ 428 10;
+BA_ "GenMsgSendType" BO_ 428 0;
+BA_ "GenMsgDelayTime" BO_ 934 0;
+BA_ "GenMsgCycleTime" BO_ 934 20;
+BA_ "GenMsgSendType" BO_ 934 0;
+BA_ "GenMsgDelayTime" BO_ 390 0;
+BA_ "GenMsgCycleTime" BO_ 390 20;
+BA_ "GenMsgSendType" BO_ 390 0;
+BA_ "GenMsgDelayTime" BO_ 858 0;
+BA_ "GenMsgSendType" BO_ 858 0;
+BA_ "GenMsgCycleTime" BO_ 858 500;
+BA_ "GenMsgILSupport" BO_ 2041 0;
+BA_ "DiagResponse" BO_ 2041 1;
+BA_ "GenMsgSendType" BO_ 2041 1;
+BA_ "GenMsgDelayTime" BO_ 2041 0;
+BA_ "GenMsgILSupport" BO_ 2033 0;
+BA_ "DiagRequest" BO_ 2033 1;
+BA_ "GenMsgSendType" BO_ 2033 1;
+BA_ "GenMsgDelayTime" BO_ 2033 0;
+BA_ "GenMsgSendType" BO_ 939 0;
+BA_ "GenMsgCycleTime" BO_ 939 100;
+BA_ "GenMsgDelayTime" BO_ 939 0;
+BA_ "GenMsgILSupport" BO_ 2015 0;
+BA_ "GenMsgSendType" BO_ 2015 1;
+BA_ "GenMsgDelayTime" BO_ 2015 0;
+BA_ "DiagState" BO_ 2015 1;
+BA_ "GenMsgILSupport" BO_ 1959 0;
+BA_ "DiagResponse" BO_ 1959 1;
+BA_ "GenMsgSendType" BO_ 1959 1;
+BA_ "GenMsgDelayTime" BO_ 1959 0;
+BA_ "GenMsgILSupport" BO_ 1831 0;
+BA_ "DiagRequest" BO_ 1831 1;
+BA_ "GenMsgSendType" BO_ 1831 1;
+BA_ "GenMsgDelayTime" BO_ 1831 0;
+BA_ "GenMsgSendType" BO_ 2583691296 1;
+BA_ "GenMsgDelayTime" BO_ 2583691296 0;
+BA_ "DiagRequest" BO_ 2583691296 1;
+BA_ "GenMsgILSupport" BO_ 2583691296 0;
+BA_ "GenMsgSendType" BO_ 2583691297 1;
+BA_ "GenMsgDelayTime" BO_ 2583691297 0;
+BA_ "DiagResponse" BO_ 2583691297 1;
+BA_ "GenMsgILSupport" BO_ 2583691297 0;
+BA_ "GenMsgSendType" BO_ 430 0;
+BA_ "GenMsgNrOfRepetition" BO_ 430 150;
+BA_ "GenMsgCycleTime" BO_ 430 20;
+BA_ "GenMsgDelayTime" BO_ 430 0;
+BA_ "GenMsgCycleTimeFast" BO_ 430 20;
+BA_ "GenSigStartValue" SG_ 683 VCU_BrkPedPst 0;
+BA_ "GenSigStartValue" SG_ 683 VCU_CrntGearLvl 0;
+BA_ "GenSigStartValue" SG_ 683 VCU_BrkPedPstVD 0;
+BA_ "GenSigStartValue" SG_ 697 VCU_DCU_ActRotSpd 32767;
+BA_ "GenSigStartValue" SG_ 950 BCS_YawRate 2144;
+BA_ "GenSigStartValue" SG_ 633 EMS_GasPedalActPstVD 0;
+BA_ "GenSigStartValue" SG_ 633 EMS_6_MsgCounter 0;
+BA_ "GenSigStartValue" SG_ 633 EMS_GasPedalActPstProtValue 0;
+BA_ "GenSigStartValue" SG_ 633 EMS_GasPedalActPst 0;
+BA_ "GenSigSendType" SG_ 397 EMS_BrakePedalVD 0;
+BA_ "GenSigStartValue" SG_ 397 EMS_BrakePedalVD 1;
+BA_ "GenSigSendType" SG_ 397 EMS_BrakePedalSt 0;
+BA_ "GenSigStartValue" SG_ 397 EMS_BrakePedalSt 1;
+BA_ "GenSigSendType" SG_ 386 EMS_EngSpd 0;
+BA_ "GenSigSendType" SG_ 610 EMS_GasPedalActPstforMRRVD 1;
+BA_ "GenSigSendType" SG_ 610 EMS_GasPedalActPstforMRR 1;
+BA_ "GenSigSendType" SG_ 610 EMS_BrakeVacuumPressureVD 1;
+BA_ "GenSigSendType" SG_ 610 EMS_BrakeVacuumPressure 1;
+BA_ "GenSigStartValue" SG_ 608 BCS_EngTorqDecFast 255;
+BA_ "GenSigStartValue" SG_ 608 BCS_VDCFaultSt 1;
+BA_ "GenSigStartValue" SG_ 612 SAS_SteeringAngleSpd 0;
+BA_ "GenSigStartValue" SG_ 612 SAS_SteeringAngleVD 1;
+BA_ "GenSigStartValue" SG_ 612 SAS_SteeringAngle 0;
+BA_ "GenSigStartValue" SG_ 858 ACU_Time_Year 13;
+BA_ "GenSigSendType" SG_ 858 ACU_Time_Year 0;
+BA_ "GenSigStartValue" SG_ 858 ACU_Time_Second 1;
+BA_ "GenSigSendType" SG_ 858 ACU_Time_Second 0;
+BA_ "GenSigStartValue" SG_ 858 ACU_Time_Month 1;
+BA_ "GenSigSendType" SG_ 2041 TesterPhysicalResPCU 1;
+BA_ "GenSigSendType" SG_ 2033 TesterPhysicalReqPCU 1;
+BA_ "GenSigSendType" SG_ 939 SRS_RearMiddleSeatBeltSt 0;
+BA_ "GenSigSendType" SG_ 939 SRS_RearRightSeatBeltSt 0;
+BA_ "GenSigSendType" SG_ 939 SRS_AirbagFaultSt 0;
+BA_ "GenSigStartValue" SG_ 939 SRS_AirbagFaultSt 1;
+BA_ "GenSigSendType" SG_ 939 SRS_RearLeftSeatBeltSt 0;
+BA_ "GenSigStartValue" SG_ 939 SRS_RearLeftSeatBeltSt 0;
+BA_ "GenSigStartValue" SG_ 939 SRS_DriverSeatBeltSt 0;
+BA_ "GenSigSendType" SG_ 939 SRS_DriverSeatBeltSt 0;
+BA_ "GenSigSendType" SG_ 939 SRS_PsngrSeatBeltSt 0;
+BA_ "GenSigStartValue" SG_ 939 SRS_PsngrSeatBeltSt 0;
+BA_ "GenSigSendType" SG_ 2015 TesterFunctionalReq 1;
+BA_ "GenSigSendType" SG_ 1959 TesterPhysicalResRCM 1;
+BA_ "GenSigSendType" SG_ 1831 TesterPhysicalReqRCM 1;
+BA_ "GenSigSendType" SG_ 2583691296 ACU_DevelopMessage_TX 1;
+BA_ "GenSigSendType" SG_ 2583691297 ACU_DevelopMessage_RX 1;
+BA_ "GenSigSendType" SG_ 430 SRS_1_Checksum 0;
+BA_ "GenSigSendType" SG_ 430 SRS_NearCrashOutputSt 1;
+BA_ "GenSigSendType" SG_ 430 SRS_MsgCounter 0;
+BA_ "GenSigSendType" SG_ 430 SRS_Rear_CrashOutputSt 0;
+BA_ "GenSigSendType" SG_ 430 SRS_RightSide_CrashOutputSt 0;
+BA_ "GenSigMissingSourceValue" SG_ 430 SRS_RightSide_CrashOutputSt 0;
+BA_ "GenSigSendType" SG_ 430 SRS_LeftSide_CrashOutputSt 0;
+BA_ "GenSigSendType" SG_ 430 SRS_Front_CrashOutputSt 0;
+BA_ "GenSigSendType" SG_ 430 SRS_CrashOutputSt 0;
+VAL_ 930 TPMS_RRTyreWarn 1 "1=Open" 0 "0=Closed" ;
+VAL_ 930 TPMS_RLTyreWarn 1 "1=Open" 0 "0=Closed" ;
+VAL_ 930 TPMS_FRTyreWarn 1 "1=Open" 0 "0=Closed" ;
+VAL_ 930 TPMS_FLTyreWarn 1 "1=Open" 0 "0=Closed" ;
+VAL_ 652 BCS_MasterCylinderPr 1 "1=Active" 0 "0=Not active" ;
+VAL_ 950 BCS_YawRate 1 "1=Active" 0 "0=Not active" ;
+VAL_ 618 BCS_VDCOff 1 "1=Active" 0 "0=Not active" ;
+VAL_ 633 EMS_GasPedalActPst 32767 "Invalid" ;
+VAL_ 397 EMS_BrakePedalVD 7 "Fault" 6 "Reserved" 5 "Reserved" 4 "Reserved" 3 "Running" 2 "Reserved" 1 "Cranking" 0 "Engine Stop" ;
+VAL_ 397 EMS_BrakePedalSt 7 "Fault" 6 "Reserved" 5 "Reserved" 4 "Reserved" 3 "Running" 2 "Reserved" 1 "Cranking" 0 "Engine Stop" ;
+VAL_ 386 EMS_EngSpd 7 "Fault" 6 "Reserved" 5 "Reserved" 4 "Reserved" 3 "Running" 2 "Reserved" 1 "Cranking" 0 "Engine Stop" ;
+VAL_ 610 EMS_GasPedalActPstforMRRVD 255 "Invalid" 254 "Invalid" 253 "Invalid" 252 "Invalid" 251 "Invalid" ;
+VAL_ 610 EMS_GasPedalActPstforMRR 255 "Invalid" 254 "Invalid" 253 "Invalid" 252 "Invalid" 251 "Invalid" ;
+VAL_ 610 EMS_BrakeVacuumPressureVD 255 "Invalid" 254 "Invalid" 253 "Invalid" 252 "Invalid" 251 "Invalid" ;
+VAL_ 610 EMS_BrakeVacuumPressure 255 "Invalid" 254 "Invalid" 253 "Invalid" 252 "Invalid" 251 "Invalid" ;
+VAL_ 608 BCS_VehSpdVD 1 "1=Active" 0 "0=Not active" ;
+VAL_ 608 BCS_VDCFaultSt 1 "1=Active" 0 "0=Not active" ;
+VAL_ 608 BCS_VDCActiveSt 1 "1=Active" 0 "0=Not active" ;
+VAL_ 608 BCS_VehSpd 1 "1=Active" 0 "0=Not active" ;
+VAL_ 608 BCS_TCSActiveSt 1 "1=Active" 0 "0=Not active" ;
+VAL_ 608 BCS_ABSActiveSt 1 "1=Active" 0 "0=Not active" ;
+VAL_ 612 SAS_SteeringAngleVD 32767 "Invalid" ;
+VAL_ 612 SAS_SteeringAngle 32767 "Invalid" ;
+VAL_ 940 ICM_TotalOdometer 1000000 "Invalid" 0 "0x0-0xF423F:0-999999" ;
+VAL_ 428 TCU_GearForDisp 15 "15=Neutral gear" 14 "14=Resever gear" 13 "13=Park gear" 12 "12=Driver gear" 11 "11=Sport Gear" 10 "10=Not used" 9 "9= 9th Gear" 8 "8= 8th Gear" 7 "7= 7th Gear" 6 "6= 6th Gear" 5 "5= 5th Gear" 4 "4= 4th Gear" 3 "3= 3rd Gear" 2 "2= 2nd Gear " 1 "1= 1st Gear" 0 "0= Invalid" ;
+VAL_ 934 MRR_AEBInterventionSt 1 "1=Off" 0 "0=On" ;
+VAL_ 934 MRR_AEBFaultSt 1 "1=Off" 0 "0=On" ;
+VAL_ 934 MRR_AEBOffSt 1 "1=Off" 0 "0=On" ;
+VAL_ 390 MRR_ACCModeForESP 6 "6=Standstill" 5 "5=Override" 4 "4=Brake only mode" 3 "mode 3=Active control mode" 2 "mode 2=Standby" 1 "1=passive" 0 "0=Off mode" ;
+VAL_ 858 ACU_Time_Year 255 "0xFF" 0 "0x0" ;
+VAL_ 858 ACU_Time_Second 60 "0x3C to 0x3F invalid" 0 "0 to 59 seconds" ;
+VAL_ 858 ACU_Time_Month 13 "13 to 15 invalid value" 1 "1to12 month" 0 "0 invalid value" ;
+VAL_ 858 ACU_Time_Minute 60 "0x3C to 0x3F invalid" 0 "0 to 59 Minute" ;
+VAL_ 858 ACU_Time_Hour 24 "0x18 to 0x1F invalid value" 0 "0 to 23 hours" ;
+VAL_ 858 ACU_Time_Day 32 "0x20 to 0x1F invalid" 1 "1 to 31 days" 0 "0x0 invalid" ;
+VAL_ 939 SRS_AirbagFaultSt 3 "Initializing" 2 "Reserved" 1 "Invalid" 0 "Valid" ;
+VAL_ 939 SRS_RearLeftSeatBeltSt 65535 "Invalid" ;
+VAL_ 939 SRS_DriverSeatBeltSt 3 "Initializing" 2 "Reserved" 1 "Invalid" 0 "Valid" ;
+VAL_ 939 SRS_PsngrSeatBeltSt 65535 "Invalid" ;
+VAL_ 430 SRS_1_Checksum 1 "Invalid" 0 "Valid" ;
+VAL_ 430 SRS_RightSide_CrashOutputSt 3 "Description for the value '0x3'" 2 "Reserved" 1 "ON" 0 "OFF" ;
+VAL_ 430 SRS_LeftSide_CrashOutputSt 1 "safety belt not tied(Switch on)" 0 "safety belt tied(Switch off )" ;
+VAL_ 430 SRS_Front_CrashOutputSt 1 "safety belt not tied(Switch on)" 0 "safety belt tied(Switch off )" ;
+VAL_ 430 SRS_CrashOutputSt 1 "safety belt not tied(Switch on)" 0 "safety belt tied(Switch off )" ;
+

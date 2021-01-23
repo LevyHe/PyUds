@@ -124,15 +124,21 @@ class ComBase(object):
         ''' please add Sender class object'''
         with self._tx_lock:
             if isinstance(sender, list):
-                self._senders += sender
+                for s in sender:
+                    if s not in self._senders:
+                        self._senders.append(s)
             elif callable(sender):
-                self._senders.append(sender)
+                if sender not in self._senders:
+                    self._senders.append(sender)
 
     def add_reader(self, reader):
         if isinstance(reader, list):
-            self._readers += reader
+            for r in reader:
+                if r not in self._readers:
+                    self._readers.append(r)
         elif callable(reader):
-            self._readers.append(reader)
+            if reader not in self._readers:
+                self._readers.append(reader)
     
     def remove_sender(self, sender):
         with self._tx_lock:

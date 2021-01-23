@@ -265,6 +265,7 @@ class DiagClient(object):
             else:
                 with self._lock:
                     self.tp_protocol.SendFuncReq([0x3E,0x80])
+                    self.diagDelay(0.1)
 
 
 class BaseDiagnostic(DiagRequest):

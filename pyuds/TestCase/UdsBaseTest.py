@@ -73,7 +73,9 @@ class TesterBase(object):
         __class__.AddDescription.desc = desc
 
     @UdsLoging(test_level=0, test_type=4)
-    def Requirements(self, desc):
+    def Requirements(self, desc, link=None):
+        if link:
+            desc = (desc, link)
         __class__.Requirements.desc = desc
 
     @UdsLoging(test_level=0, test_type=0)
@@ -300,7 +302,7 @@ class TesterBase(object):
             step_desc = desc
         else:
             step_desc = 'TransferData'
-        resp = self.diag.TransferData(*data)
+        resp = self.diag.TransferData(Counter, *data)
         TesterBase.TransferData.desc = step_desc
         TesterBase.TransferData.IsCheck = IsCheck
         return resp

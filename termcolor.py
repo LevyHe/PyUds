@@ -24,7 +24,6 @@ class Color(object):
         if self.TERM is None:
             self.term_color_on()
 
-       
     def term_color_on(self):
         self.kernel32.SetConsoleMode(self.kernel32.GetStdHandle(-11), 7)
 
